@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string
+        name="app_name">Gno</string>
+    <string
+        name="help">Pantalla ajuda</string>
+    <string
+        name="menu">Pantalla de menú</string>
+    <string
+        name="splash">Pantalla de presentació</string>
+    <string
+        name="settings">Pantalla opcions</string>
+    <string
+        name="game">Pantalla principal</string>
+    <string
+        name="scores">Pantalla de puntuació</string>
+    <string
+        name="app_logo_top">Un Joc</string>
+    <string
+        name="app_logo_bottom">de prova !</string>
+    <string
+        name="app_version_info">Version 0.0.1\nCopyright © 2013 Tots els drets reservats.
+    </string>
+</resources>

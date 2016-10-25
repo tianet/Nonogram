@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\AndroidProjects\Nonogram\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="cba98188ab3ea8c3eb668338609eda4a89aa7d08">
+        <dex dex="C:\AndroidProjects\Nonogram\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_1a0d6044966e4ea80414eb94a1606c8450fd8731.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\AndroidProjects\Nonogram\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.1"
+        sha1="04341570d093ecfbf0f245b8c352ec2dc90ea3d7">
+        <dex dex="C:\AndroidProjects\Nonogram\app\build\intermediates\pre-dexed\debug\instant-run_2d60d45c3ceaa8f1b869178dcbad45eb10189639.jar" />
+    </item>
+
+</items>

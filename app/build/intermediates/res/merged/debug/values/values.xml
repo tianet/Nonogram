@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="logo_color">#FFFF0F</color>
+    <color name="version_bkgrd">#1a1a48</color>
+    <color name="version_color">#f0f0f0</color>
+    <dimen name="logo_size">24pt</dimen>
+    <dimen name="version_size">15pt</dimen>
+    <dimen name="version_spacing">3pt</dimen>
+    <string name="app_logo_bottom">de prova !</string>
+    <string name="app_logo_top">Un Joc</string>
+    <string name="app_name">Gno</string>
+    <string name="app_version_info">Version 0.0.1\nCopyright © 2013 Tots els drets reservats.
+    </string>
+    <string name="game">Pantalla principal</string>
+    <string name="help">Pantalla ajuda</string>
+    <string name="menu">Pantalla de menú</string>
+    <string name="scores">Pantalla de puntuació</string>
+    <string name="settings">Pantalla opcions</string>
+    <string name="splash">Pantalla de presentació</string>
+</resources>

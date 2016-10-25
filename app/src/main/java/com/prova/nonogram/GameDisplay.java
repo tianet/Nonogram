@@ -316,6 +316,7 @@ public class GameDisplay extends SurfaceView {
                     // Paint Circle
                     if (leftIndCirc[i][j] == true) {
                         indicatorPainter.setColor(grid.getColors()[j].getC());
+                        indicatorPainter.setAlpha(255);
                         canvas.drawCircle(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j - 0.5))), toScreen((int) (s_y + (grid.getN_cols() + i + 0.5) * cellSizeY)), toScreen(textSize - 2), indicatorPainter);
                     }
                 } else if (aux < 0) {
@@ -348,6 +349,7 @@ public class GameDisplay extends SurfaceView {
                     escriuNormal(canvas, "" + gameAux, toScreen(textSize), grid.getColors()[j].getC(), toScreen(x), toScreen(y));
                     if (topIndCirc[i][j] == true) {
                         indicatorPainter.setColor(grid.getColors()[j].getC());
+                        indicatorPainter.setAlpha(255);
                         canvas.drawCircle(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() + i + 0.5))), toScreen((int) (s_y + (grid.getN_cols() - j - 0.5) * cellSizeY)), toScreen(textSize - 2), indicatorPainter);
                     }
                 } else if (aux < 0) {
@@ -373,12 +375,10 @@ public class GameDisplay extends SurfaceView {
             if (i == 0) {
                 buttons[i] = new ImageHandler(this, R.drawable.triangle);
             } else {
-                if (grid.getColors()[i - 1].getC() == Color.BLACK) {
-                    buttons[i] = new ImageHandler(this, R.drawable.button_black);
-                } else if (grid.getColors()[i - 1].getC() == Color.BLUE) {
-                    buttons[i] = new ImageHandler(this, R.drawable.button_blue);
-                } else if (grid.getColors()[i - 1].getC() == Color.GREEN) {
-                    buttons[i] = new ImageHandler(this, R.drawable.button_green);
+                if (grid.getColors()[i - 1].getF() == Form.CIRCLE) {
+                    buttons[i] = new ImageHandler(this, R.drawable.round_button);
+                } else if (grid.getColors()[i - 1].getF() == Form.SQUARE) {
+                    buttons[i] = new ImageHandler(this, R.drawable.button);
                 }
             }
         }
@@ -391,8 +391,13 @@ public class GameDisplay extends SurfaceView {
         int padding = (int) ((f_x - s_x) / ((nColors + 1)));
         int startX = (int) (s_x + padding);
         for (int i = 0; i < nColors; i++) {
-            buttons[i].pinta(canvas, toScreen(startX + padding * i), toScreen(startY), toScreen(100), toScreen(100));
+            if ( i ==0) {
+                buttons[i].pinta(canvas, toScreen(startX ), toScreen(startY), toScreen(100), toScreen(100));
+            }else {
+                buttons[i].pintaAmbFiltre(canvas, toScreen(startX + padding * i), toScreen(startY), toScreen(100), toScreen(100),grid.getColors()[i-1].getC(), 255);
+            }
         }
+
     }
 
     public int toScreen(int in) {

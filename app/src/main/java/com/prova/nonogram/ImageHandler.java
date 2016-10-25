@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 
 import java.util.Random;
 
@@ -61,6 +63,49 @@ public class ImageHandler
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth((float) 1.0);
             canvas.drawRect(x-2, y-2, x+w+4, y+h+4, paint);
+        }
+    }
+
+    public void pintaAmbFiltre(Canvas canvas, int x, int y, int w, int h, int c, int transparencia)
+    {
+        if (!visible) return;
+
+        int red = (c & 0xFF0000) / 0xFFFF;
+        int green = (c & 0xFF00) / 0xFF;
+        int blue = c & 0xFF;
+
+        float[] colorTransform = {
+                0, 0f, 0, 0, red,
+                0, 0, 0f, 0, green,
+                0, 0, 0, 0f, blue,
+                0, 0, 0, 1f, 0};
+
+        ColorMatrix colorMatrix = new ColorMatrix();
+        colorMatrix.setSaturation(0f); //Remove Colour
+        colorMatrix.set(colorTransform); //Apply the Red
+        ColorMatrixColorFilter colorFilter = new ColorMatrixColorFilter(colorMatrix);
+
+        Rect src = new Rect(0, 0, width, height);
+        Rect dst = new Rect(x, y, x + w, y + h);
+        Paint paint = new Paint();
+
+        canvas.drawBitmap(bmp, src, dst, paint);
+        paint.setAlpha(transparencia);
+        paint.setColorFilter(colorFilter);
+        canvas.drawBitmap(bmp, src, dst, paint);
+        posX = x;
+        posY = y;
+        ampla = w;
+        alt = h;
+
+        if (seleccionat)
+        {
+            paint.setColor(Color.WHITE);
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth((float) 4.0);
+            //
+            // canvas.drawRect(x, y, x+w, y+h, paint);
+            canvas.drawCircle(x+w/2,y+h/2,w/2+3,paint);
         }
     }
 

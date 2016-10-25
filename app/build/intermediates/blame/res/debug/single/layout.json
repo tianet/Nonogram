@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\layout\\joc.xml",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\joc.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\layout\\punts.xml",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\punts.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\layout\\presentacio.xml",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\presentacio.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\layout\\ajuda.xml",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\ajuda.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\layout\\opcions.xml",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\opcions.xml"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\layout\\menu.xml",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\menu.xml"
+    }
+]

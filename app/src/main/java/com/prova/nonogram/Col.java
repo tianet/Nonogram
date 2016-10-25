@@ -1,6 +1,7 @@
 package com.prova.nonogram;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 /**
@@ -55,6 +56,7 @@ public class Col {
 
         Paint p = new Paint();
         p.setColor(color);
+        p.setAlpha(255);
         p.setStyle(Paint.Style.FILL);
         switch (f){
             case CIRCLE:

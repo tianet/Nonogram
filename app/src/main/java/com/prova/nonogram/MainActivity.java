@@ -25,9 +25,9 @@ public class MainActivity extends JocProvaActivity {
         try {
 
             Col colors []  =new Col[3];
-            colors[0] = new Col(Color.BLACK,Form.CIRCLE);
-            colors[1] = new Col(Color.GREEN,Form.CIRCLE);
-            colors[2] = new Col(Color.BLUE,Form.CIRCLE);
+            colors[0] = new Col(0x0,Form.SQUARE);
+            colors[1] = new Col(0x00FF00,Form.SQUARE);
+            colors[2] = new Col(0x0941f5 ,Form.CIRCLE);
 
             Grid grid = new Grid(5,4,colors);
             TopLeftIndicators tli = new TopLeftIndicators(grid);

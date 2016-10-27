@@ -24,20 +24,20 @@
         "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\dos.png"
     },
     {
-        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\sis.png",
-        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\sis.png"
-    },
-    {
         "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button_black.png",
         "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\button_black.png"
     },
     {
-        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button_blue.png",
-        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\button_blue.png"
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\sis.png",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\sis.png"
     },
     {
         "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button.png",
         "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\button.png"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button_blue.png",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\button_blue.png"
     },
     {
         "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\un.png",

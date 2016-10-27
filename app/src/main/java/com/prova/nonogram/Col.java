@@ -60,7 +60,9 @@ public class Col {
         p.setStyle(Paint.Style.FILL);
         switch (f){
             case CIRCLE:
-                int r = widht/2-padding/2;
+                int r =0;
+                if(widht<=height) r=widht/2-padding/2;
+                if(widht>height) r=height/2-padding/2;
                 p.setStrokeWidth(4);
                 c.drawCircle(startX+widht/2, startY+height/2, r-padding/2, p);
                 break;

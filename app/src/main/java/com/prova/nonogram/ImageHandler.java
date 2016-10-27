@@ -59,14 +59,14 @@ public class ImageHandler
 
         if (seleccionat)
         {
-            paint.setColor(Color.WHITE);
+            paint.setColor(Color.BLACK);
             paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth((float) 1.0);
-            canvas.drawRect(x-2, y-2, x+w+4, y+h+4, paint);
+            paint.setStrokeWidth((float) 4.0);
+            canvas.drawRect(x-5, y-5, x+w+5, y+h+5, paint);
         }
     }
 
-    public void pintaAmbFiltre(Canvas canvas, int x, int y, int w, int h, int c, int transparencia)
+    public void pintaAmbFiltre(Canvas canvas, int x, int y, int w, int h, int c, int transparencia, Form form)
     {
         if (!visible) return;
 
@@ -104,13 +104,24 @@ public class ImageHandler
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth((float) 4.0);
             //
-            // canvas.drawRect(x, y, x+w, y+h, paint);
-            canvas.drawCircle(x+w/2,y+h/2,w/2+3,paint);
+            if(form==Form.CIRCLE){
+                canvas.drawCircle(x+w/2,y+h/2,w/2+5,paint);
+            } else {
+                canvas.drawRect(x-5, y-5, x+w+5, y+h+5, paint);
+            }
+
+
         }
     }
 
     public boolean contePunt(float x2, float y2) {
-        return (x2 > posX && x2 < posX + ampla) && (y2 > posY && y2 < posY + alt);
+        boolean aux = (x2 > posX && x2 < posX + ampla) && (y2 > posY && y2 < posY + alt);
+        if (aux){
+            selecciona();
+        } else {
+            deselecciona();
+        }
+        return aux;
     }
 
     public void selecciona() { seleccionat = true; }

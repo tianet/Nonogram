@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:2:1-34:12
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:2:1-36:12
 	package
 		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:4:5-33
 		INJECTED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml
@@ -16,49 +16,49 @@ ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:2:1-34:1
 	xmlns:android
 		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:3:5-63
 application
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:7:5-31:19
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:7:5-33:19
 	android:label
 		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:8:9-41
 	android:icon
 		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:9:9-42
 activity#com.prova.nonogram.MainActivity
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:10:9-19:20
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:10:9-14:20
 	android:label
 		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:12:13-45
 	android:name
 		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:11:13-59
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:13:13-18:29
-action#android.intent.action.MAIN
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:14:17-15:65
-	android:name
-		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:15:21-62
-category#android.intent.category.LAUNCHER
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:16:17-17:71
-	android:name
-		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:17:21-68
 activity#com.prova.nonogram.JocProvaOpcionsActivity
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:23:9-24:82
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:18:9-26:20
 	android:name
-		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:24:13-70
+		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:19:13-70
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:20:13-25:29
+action#android.intent.action.MAIN
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:21:17-22:65
+	android:name
+		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:22:21-62
+category#android.intent.category.LAUNCHER
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:23:17-24:71
+	android:name
+		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:24:21-68
 activity#com.prova.nonogram.JocProvaAjudaActivity
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:25:9-26:80
-	android:name
-		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:26:13-68
-activity#com.prova.nonogram.JocProvaPuntsActivity
 ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:27:9-28:80
 	android:name
 		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:28:13-68
-activity#com.prova.nonogram.JocProvaMenuActivity
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:29:9-30:79
+activity#com.prova.nonogram.JocProvaPuntsActivity
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:29:9-30:80
 	android:name
-		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:30:13-67
+		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:30:13-68
+activity#com.prova.nonogram.JocProvaMenuActivity
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:31:9-32:79
+	android:name
+		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:32:13-67
 uses-sdk
-ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:32:5-33:37
+ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:34:5-35:37
 	android:targetSdkVersion
 		INJECTED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml
 		INJECTED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:33:9-34
+		ADDED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml:35:9-34
 		INJECTED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml
 		INJECTED from C:\AndroidProjects\Nonogram\app\src\main\AndroidManifest.xml

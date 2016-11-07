@@ -25,14 +25,20 @@ public class MainActivity extends JocProvaActivity {
         super.init();
         // i ara cream per programa la zona de dibuix
         try {
+            colors = new int[6];
+            colors[0] = 0x0;
+            colors[1] = 0x00FF00;
+            colors[2] = 0x0000FF;
+            colors[3] = 0xFF00FF;
+            colors[4] = 0x00FFFF;
+            colors[5] = 0xFFFF00;
+            Col figures []  =new Col[nColors];
+            for (int i =0; i < nColors; i++) {
+                figures[i] = new Col(colors[i], form);
+            }
 
-            Col colors []  =new Col[3];
-            colors[0] = new Col(0x0,Form.SQUARE);
-            colors[1] = new Col(0x00FF00,Form.SQUARE);
-            colors[2] = new Col(0x0000FF ,Form.CIRCLE);
 
-
-            Grid grid = new Grid(5,4,colors);
+            Grid grid = new Grid(nRows,nColumns,figures);
             TopLeftIndicators tli = new TopLeftIndicators(grid);
             joc = new GameDisplay(this, grid ,  tli);
 

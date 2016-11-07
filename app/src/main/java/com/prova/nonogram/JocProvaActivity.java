@@ -7,6 +7,11 @@ public class JocProvaActivity extends Activity {
 
     public static final String GAME_PREFERENCES = "GamePrefs";
 
+    public static int  nColors;
+    public static int nRows;
+    public static int nColumns;
+    public static int[] colors;
+    public static Form form;
     protected Typeface fontJoc;
 
     public void init()

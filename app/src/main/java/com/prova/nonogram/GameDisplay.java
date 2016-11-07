@@ -492,11 +492,11 @@ public class GameDisplay extends SurfaceView {
 
         for (int i = 0; i < tli.getTopInd().length ; i++) {
             for (int j = 0; j < tli.getTopInd()[0].length; j++) {
-                if (tli.getLeftInd()[i][j] != 0){
+                if (tli.getTopInd()[i][j] != 0){
                     fullGrid = false;
                     break;
                 }
-                if ((tli.getTopIndCirc()[i][j] )) {
+                if (tli.getTopIndCirc()[i][j]) {
                     Log.v("Error", "Checks errors " + i + " "+ j );
                     noError = false;
                     break;
@@ -504,7 +504,6 @@ public class GameDisplay extends SurfaceView {
             }
             if (!(fullGrid && noError)) break;
         }
-
         return fullGrid && noError;
     }
 
@@ -519,7 +518,7 @@ public class GameDisplay extends SurfaceView {
             Col color = grid.getColors()[aux];
             int status = 0;
             int leftInd = 0;
-            for (int c = 0; c < grid.getArray_cols()[0].length; c++) {
+            for (int c = 0; c < grid.getArray_cols().length; c++) {
                 switch (status) {
                     case 0:
                         if (color == grid.getArray_cols()[c][row]) {
@@ -553,7 +552,7 @@ public class GameDisplay extends SurfaceView {
             Col color = grid.getColors()[aux];
             int status = 0;
             int topInd = 0;
-            for (int r = 0; r < grid.getArray_cols().length; r++) {
+            for (int r = 0; r < grid.getArray_cols()[0].length; r++) {
                 switch (status) {
                     case 0:
                         if (color == grid.getArray_cols()[col][r]) {

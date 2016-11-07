@@ -14,18 +14,19 @@
         <activity
             android:name="com.prova.nonogram.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!--
             <activity
             android:name="MainActivity"></activity>
         -->
 
-        <activity android:name="com.prova.nonogram.JocProvaOpcionsActivity" />
+        <activity android:name="com.prova.nonogram.JocProvaOpcionsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.prova.nonogram.JocProvaAjudaActivity" />
         <activity android:name="com.prova.nonogram.JocProvaPuntsActivity" />
         <activity android:name="com.prova.nonogram.JocProvaMenuActivity" />

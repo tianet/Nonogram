@@ -52,11 +52,11 @@ public class Col {
                 c.drawRect(startX+padding,startY+padding,startX+ widht-padding,startY+height-padding,p);
         }
     }
-    public void drawColOnCanvas(Canvas c, int startX,int startY, int widht,int height,int padding){
+    public void drawColOnCanvas(Canvas c, int startX,int startY, int widht,int height,int padding, int alpha){
 
         Paint p = new Paint();
         p.setColor(color);
-        p.setAlpha(255);
+        p.setAlpha(alpha);
         p.setStyle(Paint.Style.FILL);
         switch (f){
             case CIRCLE:

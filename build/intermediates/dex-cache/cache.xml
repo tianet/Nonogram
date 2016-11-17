@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="b43be66a5a4b7df958875b8f0e8efe0d4b805f57">
+        sha1="c938b63b43293274d1452a27585daa11bc06ed09">
         <dex dex="C:\AndroidProjects\Nonogram\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_1a0d6044966e4ea80414eb94a1606c8450fd8731.jar" />
     </item>
     <item
@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="fb1098072d7690bb6a098b50152efc10e1a55645">
+        sha1="c6f126e30785b5adb593b24001bbc7221ef94df3">
         <dex dex="C:\AndroidProjects\Nonogram\app\build\intermediates\pre-dexed\debug\instant-run_2d60d45c3ceaa8f1b869178dcbad45eb10189639.jar" />
     </item>
 

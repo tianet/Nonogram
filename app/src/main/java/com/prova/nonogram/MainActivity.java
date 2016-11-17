@@ -4,12 +4,14 @@ package com.prova.nonogram;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 public class MainActivity extends JocProvaActivity {
     private GameDisplay joc;
+
 
  
     @Override
@@ -25,13 +27,13 @@ public class MainActivity extends JocProvaActivity {
         super.init();
         // i ara cream per programa la zona de dibuix
         try {
-            colors = new int[6];
-            colors[0] = 0x0;
-            colors[1] = 0x00FF00;
-            colors[2] = 0x0000FF;
-            colors[3] = 0xFF00FF;
-            colors[4] = 0x00FFFF;
-            colors[5] = 0xFFFF00;
+            //colors = new int[6];
+            //colors[0] = 0x0;
+            //colors[1] = 0x00FF00;
+            //colors[2] = 0x0000FF;
+            //colors[3] = 0xFF00FF;
+            //colors[4] = 0x00FFFF;
+            //colors[5] = 0xFFFF00;
             Col figures []  =new Col[nColors];
             for (int i =0; i < nColors; i++) {
                 figures[i] = new Col(colors[i], form);
@@ -40,10 +42,23 @@ public class MainActivity extends JocProvaActivity {
 
             Grid grid = new Grid(nRows,nColumns,figures);
             TopLeftIndicators tli = new TopLeftIndicators(grid);
-            joc = new GameDisplay(this, grid ,  tli);
+            if (difficulty == Difficulty.RANDOM) {
+                joc = new GameDisplay(this, grid ,  tli);
+                // afegeix la pantalla de dibuix al Layout
+                pantalla.addView(joc);
+            } else {
+                while (TopLeftIndicators.getDifficulty(tli, grid)!=difficulty) {
+                    grid = new Grid(nRows,nColumns,figures);
+                    tli = new TopLeftIndicators(grid);
+                }
+                joc = new GameDisplay(this, grid ,  tli);
+                // afegeix la pantalla de dibuix al Layout
+                pantalla.addView(joc);
+            }
 
-            // afegeix la pantalla de dibuix al Layout
-            pantalla.addView(joc);
+
+
+
         }catch (Exception e){
             e.printStackTrace();
         }

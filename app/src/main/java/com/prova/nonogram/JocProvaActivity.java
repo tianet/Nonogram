@@ -10,6 +10,12 @@ public class JocProvaActivity extends Activity {
     public static int  nColors;
     public static int nRows;
     public static int nColumns;
+    public  enum Difficulty  {
+            EASY,
+            MEDIUM,
+            DIFFICULT,
+            RANDOM};
+    public static Difficulty difficulty;
     public static int[] colors;
     public static Form form;
     protected Typeface fontJoc;

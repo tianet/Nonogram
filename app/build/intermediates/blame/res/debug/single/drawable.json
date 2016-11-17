@@ -32,6 +32,10 @@
         "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\sis.png"
     },
     {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button_delete_square.png",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\button_delete_square.png"
+    },
+    {
         "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button_blue.png",
         "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\button_blue.png"
     },
@@ -54,5 +58,9 @@
     {
         "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tres.png",
         "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\tres.png"
+    },
+    {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\round_button_delete.png",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\drawable\\round_button_delete.png"
     }
 ]

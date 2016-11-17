@@ -20,6 +20,10 @@
         "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\opcions.xml"
     },
     {
+        "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_color_layout.xml",
+        "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\dialog_color_layout.xml"
+    },
+    {
         "merged": "C:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\res\\merged\\debug\\layout\\menu.xml",
         "source": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\layout\\menu.xml"
     }

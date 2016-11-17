@@ -1,5 +1,7 @@
 package com.prova.nonogram;
 
+import android.util.Log;
+
 /**
  * Created by Juancki on 19/09/16.
  */
@@ -128,5 +130,61 @@ public class TopLeftIndicators {
                 topIndCirc [col][aux] = (status==1 || status==2) && topInd[col][aux]>1;
             }
         }
+    }
+
+    /**
+     * Returns the difficulty of the grid.
+     * @param tli
+     * @param grid
+     * @return
+     */
+    public static JocProvaActivity.Difficulty getDifficulty (TopLeftIndicators tli, Grid grid){
+       // Log.v("Debug","It arrives here");
+        int numberOfCircles=0;
+        int totalNumber = grid.getCols()*grid.getN_cols() + grid.getRows()*grid.getN_cols();
+        //Circles in left difficulties
+        for (int i = 0; i < grid.getRows()-1 ; i++) {
+            for (int j = 0; j < grid.getN_cols()-1; j++ ){
+                if (tli.getLefIndCirc()[i][j]) {
+                    numberOfCircles++;
+                }
+            }
+        }
+        for (int i = 0; i < grid.getCols() ; i++) {
+            for (int j = 0; j < grid.getN_cols(); j++ ){
+                if (tli.getTopIndCirc()[i][j]) {
+                    numberOfCircles++;
+                }
+            }
+        }
+
+        float percentage = (float) numberOfCircles/(float) totalNumber;
+        System.out.println("Number of circles "+numberOfCircles + "Total Number " + totalNumber+  " Percentatge:"+percentage);
+        if (totalNumber < 20) {
+            if (percentage > 0.25) {
+                return JocProvaActivity.Difficulty.EASY;
+            } else if (percentage < 0.25 && percentage > 0.10 ) {
+                return JocProvaActivity.Difficulty.MEDIUM;
+            } else {
+                return JocProvaActivity.Difficulty.DIFFICULT;
+            }
+        } else if (totalNumber >20 && totalNumber < 30) {
+            if (percentage > 0.15) {
+                return JocProvaActivity.Difficulty.EASY;
+            } else if (percentage < 0.15 && percentage > 0.075 ) {
+                return JocProvaActivity.Difficulty.MEDIUM;
+            } else {
+                return JocProvaActivity.Difficulty.DIFFICULT;
+            }
+        } else {
+            if (percentage > 0.1) {
+                return JocProvaActivity.Difficulty.EASY;
+            } else if (percentage < 0.1 && percentage > 0.05 ) {
+                return JocProvaActivity.Difficulty.MEDIUM;
+            } else {
+                return JocProvaActivity.Difficulty.DIFFICULT;
+            }
+        }
+
     }
 }

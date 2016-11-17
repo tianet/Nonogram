@@ -1,6 +1,7 @@
 package com.prova.nonogram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -8,7 +9,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
+
+import java.util.Random;
 
 public class GameDisplay extends SurfaceView {
     private Context context;
@@ -30,8 +32,6 @@ public class GameDisplay extends SurfaceView {
     private double cellSizeX;
     private double cellSizeY;
 
-
-    private double lastPressedTime;
     private int lastPressedX;
     private int lastPressedY;
     private ImageHandler[] buttons;
@@ -46,11 +46,14 @@ public class GameDisplay extends SurfaceView {
     private double delays[][];
     private double maxPreassureTime = 100;
 
+    private boolean gameFinished = false;
+
     /**
      * GameDisplay constructor.
+     *
      * @param cont Context of the application
-     * @param g Grid of the game
-     * @param t TopLeftIndicator of the game
+     * @param g    Grid of the game
+     * @param t    TopLeftIndicator of the game
      */
     public GameDisplay(Context cont, Grid g, TopLeftIndicators t) {
         super(cont);
@@ -118,6 +121,7 @@ public class GameDisplay extends SurfaceView {
         gray.setStyle(Paint.Style.FILL);
         paintErr = new Paint();
         paintErr.setColor(Color.RED);
+        paintErr.setAlpha(100);
         paintErr.setStyle(Paint.Style.FILL);
         indicatorPainter = new Paint();
         indicatorPainter.setStyle(Paint.Style.STROKE);
@@ -130,7 +134,6 @@ public class GameDisplay extends SurfaceView {
     public void initiateGame() {
         this.grid = new Grid(gameGrid);// gameGrid;
         this.tli = new TopLeftIndicators(gameTli);
-
         delays = new double[grid.getArray_cols().length][grid.getArray_cols()[0].length];
 
         presentCol = 0;
@@ -143,6 +146,7 @@ public class GameDisplay extends SurfaceView {
 
     /**
      * This method paints the game on screen.
+     *
      * @param canvas Canvas where it paints.
      */
     protected void drawGame(Canvas canvas) {
@@ -176,27 +180,31 @@ public class GameDisplay extends SurfaceView {
 
     /**
      * Listener for touch events.
+     *
      * @param event
      * @return
      */
     public boolean onTouchEvent(MotionEvent event) {
 
         switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN: {
-
-            }
+            case MotionEvent.ACTION_DOWN: {}
             case MotionEvent.ACTION_MOVE: {
+                if (gameFinished&&finalTap) {
+                    Intent i = new Intent(context, JocProvaOpcionsActivity.class);
+                    context.startActivity(i);
+
+                }
                 int x = fromScreen((int) event.getX());
                 int y = fromScreen((int) event.getY());
                 if (x > s_x && x < f_x && y > s_y && y < f_y) {
                     int p = (int) ((x - s_x) / cellSizeX);
                     int q = (int) ((y - s_y) / cellSizeY);
                     touchOnGrid(p, q);
-                    if (gameWon()) {
-                        Toast toast = Toast.makeText(context, "Game won", Toast.LENGTH_LONG);
-                        toast.show();
-                    }
 
+                    if (gameWon()) {
+                        gameFinished = true;
+                        setDelaysForFinalAnimation();
+                    }
                     return true;
                 } else {
                     x = (int) event.getX();
@@ -206,22 +214,52 @@ public class GameDisplay extends SurfaceView {
                             presentCol = i - 1;
                         }
                     }
-
                 }
                 break;
             }
             case MotionEvent.ACTION_UP: {
                 lastPressedX = -1;
                 lastPressedY = -1;
+                if (gameFinished&&!finalTap) {
+                    finalTap =true;
+                }
                 break;
-            }
 
+            }
         }
         return super.onTouchEvent(event);
+    }
+    private  boolean finalTap = false;
+    /**
+     * Creates the delays for the final animation.
+     * Each color has starting delay and then it is added a uniform variable.
+     *
+     *      *---------*
+     *      | random  |
+     *      *---------*
+     *            *---------*
+     *            | random  |
+     *            *---------*
+     *
+     * Due that there will not be any touch event.
+     * The delay arrays will be used for the final animation.
+     */
+    private void setDelaysForFinalAnimation() {
+        int aux;
+        Random r = new Random();
+        long milis = System.currentTimeMillis();
+        for (int i = 0; i < delays.length; i++) {
+            for (int j = 0; j < delays[0].length; j++) {
+                aux =1+ grid.getColIndex(grid.getArray_cols()[i][j]);
+
+                delays[i][j] = milis + aux * 750 + 500 * r.nextDouble();
+            }
+        }
     }
 
     /**
      * This method handles touches on the game grid.
+     *
      * @param p Column pressed.
      * @param q Row pressed.
      */
@@ -243,6 +281,7 @@ public class GameDisplay extends SurfaceView {
 
     /**
      * This method deletes the content of a cell.
+     *
      * @param col Column of the cell to delete.
      * @param row Row of the cell to delete.
      */
@@ -258,8 +297,11 @@ public class GameDisplay extends SurfaceView {
         }
     }
 
+
+
     /**
      * This methods sets the content of a cell with the present color.
+     *
      * @param col Column of the cell to set.
      * @param row Row of the cell to set.
      */
@@ -274,35 +316,33 @@ public class GameDisplay extends SurfaceView {
 
     /**
      * This method paints the game grid.
+     *
      * @param canvas Canvas where it paints the game grid.
      */
     public void drawGridContent(Canvas canvas) {
         for (int j = n_cols; j < m; j++) {
             for (int i = n_cols; i < n; i++) {
-                if (lastPressedY == j - n_cols && lastPressedX == i - n_cols) {
-                    drawLastPressedCol(i, j, canvas);
+                if (gameFinished) {
+                    drawFinalAnimation(i, j, canvas);
                 } else {
-                    drawPressedCol(i, j, canvas);
+                    if (lastPressedY == j - n_cols && lastPressedX == i - n_cols) {
+                        drawLastPressedCol(i, j, canvas);
+                    } else {
+                        drawPressedCol(i, j, canvas);
+                    }
                 }
-                /*if (j == lastPressedY+n_cols && i ==lastPressedX+n_cols){
-
-                }else{
-                    grid.getArray_cols()[i - n_cols][j - n_cols].drawColOnCanvas(canvas,
-                            toScreen((int) ((i) * cellSizeX + s_x)), toScreen((int) ((j) * cellSizeY + s_y)),
-                            toScreen((int) (cellSizeX)), toScreen((int) (cellSizeY)),
-                            5);
-                }*/
             }
         }
     }
 
     /**
      * This method paints all set cells.
+     *
      * @param i
      * @param j
      * @param canvas
      */
-    public void drawPressedCol(int i, int j, Canvas canvas) {
+    private void drawPressedCol(int i, int j, Canvas canvas) {
         double relative = System.currentTimeMillis() - delays[i - n_cols][j - n_cols];
         double factor = 1;
         if (relative < 2 * maxPreassureTime) {
@@ -310,14 +350,62 @@ public class GameDisplay extends SurfaceView {
             if (relative < 1.5 * maxPreassureTime)
                 factor = relative / maxPreassureTime;
         }
+        drawColAt(i, j, 0, 0, factor, 255, canvas);
+    }
+
+    /**
+     * Draws a Cell positioned at (i,j) inside the printable grid area.
+     * The (width, high) of cell will be  factor*(cellSizeX,sellSizeY)
+     * (varX,varY) are additive distance for the future printed cell.
+     *
+     * @param i
+     * @param j
+     * @param varX If no X offset set to 0.
+     * @param varY If no Y offset set to 0.
+     * @param factor if no +-zoom set factor to 1.
+     * @param alpha Is the common nomenclature for opacity.
+     * @param canvas
+     */
+
+    private void drawColAt(int i, int j, double varX, double varY, double factor, int alpha, Canvas canvas) {
         grid.getArray_cols()[i - n_cols][j - n_cols].drawColOnCanvas(canvas,
-                toScreen((int) ((i + (1 - factor) / 2) * cellSizeX + s_x)), toScreen((int) ((j + (1 - factor) / 2) * cellSizeY + s_y)),
+                toScreen((int) ((i + (1 - factor) / 2) * cellSizeX + s_x + varX)), toScreen((int) ((j + (1 - factor) / 2) * cellSizeY + s_y + varY)),
                 toScreen((int) (cellSizeX * factor)), toScreen((int) (cellSizeY * factor)),
-                5);
+                5, alpha);
+    }
+
+    /**
+     * Draws the final animation using the delays defined in setDelaysForFinalAnimation()
+     * The animation consist of dropping cells to the bottom of the screen.
+     * @param i
+     * @param j
+     * @param canvas
+     */
+    public void drawFinalAnimation(int i, int j, Canvas canvas) {
+        double relative = System.currentTimeMillis() - delays[i - n_cols][j - n_cols];
+        double factor = 1;
+        if (relative < 0) {
+            drawColAt(i, j, 0, 0, factor, 255, canvas);
+            return;
+        }
+        relative = relative / 1000;
+        factor = 1 + 0.03 * relative * relative;
+        int alpha;
+        if (255 - relative * 70 < 0) {
+            return;
+        } else {
+            alpha = (int) (255 - relative * 70);
+        }
+        double x_i = 0;
+        double y_i = relative*relative * 300;
+        drawColAt(i, j, x_i, y_i, factor, alpha, canvas);
+        escriuCentrat(canvas,"Game Won!", 75,Color.BLACK, toScreen(1080/2));
+
     }
 
     /**
      * This method paints the last set cell.
+     *
      * @param i
      * @param j
      * @param canvas
@@ -327,14 +415,12 @@ public class GameDisplay extends SurfaceView {
         double factor = 1.5;
         if (relative < 1.5 * maxPreassureTime)
             factor = relative / maxPreassureTime;
-        grid.getArray_cols()[i - n_cols][j - n_cols].drawColOnCanvas(canvas,
-                toScreen((int) ((i + (1 - factor) / 2) * cellSizeX + s_x)), toScreen((int) ((j + (1 - factor) / 2) * cellSizeY + s_y)),
-                toScreen((int) (cellSizeX * factor)), toScreen((int) (cellSizeY * factor)),
-                5);
+        drawColAt(i, j, 0, 0, factor, 255, canvas);
     }
 
     /**
      * This method paints the lines of the grid.
+     *
      * @param canvas
      */
     public void drawGrid(Canvas canvas) {
@@ -359,14 +445,14 @@ public class GameDisplay extends SurfaceView {
             }
         }
         //Paint horizontal lines
-        for (int i = 1; i < nRow + nCol + 1; i++) {
+        for (int i = 1; i < nRow + nCol +1; i++) {
             if (i < nCol) {
                 canvas.drawLine(toScreen((int) (s_x + cellSizeX * nCol)), toScreen((int) (s_y + i * cellSizeY)), toScreen((int) (f_x)), toScreen((int) (s_y + i * cellSizeY)), paint);
             } else {
-                if ((i + nRow + nCol) % 2 == 1 ) {
+                if ((i + nRow + nCol) % 2 == 1) {
                     canvas.drawRect(toScreen((int) (s_x)), toScreen((int) (s_y + i * cellSizeY)), toScreen((int) (f_x)), toScreen((int) (s_y + (1 + i) * cellSizeY)), gray);
                 }
-                //canvas.drawLine(toScreen((int) (s_x)), toScreen((int)(s_y+i*cellSizeY)), toScreen((int) (f_x)), toScreen((int) (s_y+i*cellSizeY)), paint);
+                canvas.drawLine(toScreen((int) (s_x)), toScreen((int)(s_y+i*cellSizeY)), toScreen((int) (f_x)), toScreen((int) (s_y+i*cellSizeY)), paint);
             }
         }
     }
@@ -374,6 +460,7 @@ public class GameDisplay extends SurfaceView {
 
     /**
      * This method paints the left hints.
+     *
      * @param canvas
      */
     public void drawLeftIndicator(Canvas canvas) {
@@ -400,7 +487,7 @@ public class GameDisplay extends SurfaceView {
                 if (aux > 0) {
                     escriuNormal(canvas, "" + gameAux, toScreen(textSize), grid.getColors()[j].getC(), toScreen(x), toScreen(y));
                     // Paint Circle
-                    if (leftIndCirc[i][j] ) {
+                    if (leftIndCirc[i][j]) {
                         indicatorPainter.setColor(grid.getColors()[j].getC());
                         indicatorPainter.setAlpha(255);
                         canvas.drawCircle(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j - 0.5))), toScreen((int) (s_y + (grid.getN_cols() + i + 0.5) * cellSizeY)), toScreen(textSize - 2), indicatorPainter);
@@ -409,7 +496,7 @@ public class GameDisplay extends SurfaceView {
                     canvas.drawRect(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j - 1))), toScreen((int) (s_y + (grid.getN_cols() + i) * cellSizeY)), toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j))), toScreen((int) (s_y + (grid.getN_cols() + i + 1) * cellSizeY)), paintErr);
                     escriuNormal(canvas, "" + gameAux, toScreen(textSize), grid.getColors()[j].getC(), toScreen(x), toScreen(y));
                     // Paint Circle
-                    if (leftIndCirc[i][j] ) {
+                    if (leftIndCirc[i][j]) {
                         indicatorPainter.setColor(grid.getColors()[j].getC());
                         indicatorPainter.setAlpha(255);
                         canvas.drawCircle(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j - 0.5))), toScreen((int) (s_y + (grid.getN_cols() + i + 0.5) * cellSizeY)), toScreen(textSize - 2), indicatorPainter);
@@ -422,6 +509,7 @@ public class GameDisplay extends SurfaceView {
 
     /**
      * This method paints the top hints.
+     *
      * @param canvas
      */
     public void drawTopIndicator(Canvas canvas) {
@@ -469,18 +557,22 @@ public class GameDisplay extends SurfaceView {
         }
     }
 
-
+    /**
+     * Returns true if the player has won.
+     * False otherwise.
+     * @return
+     */
     public boolean gameWon() {
         boolean fullGrid = true;
         boolean noError = true;
-        for (int i = 0; i < tli.getLeftInd().length ; i++) {
+        for (int i = 0; i < tli.getLeftInd().length; i++) {
             for (int j = 0; j < tli.getLeftInd()[0].length; j++) {
-                if (tli.getLeftInd()[i][j] != 0){
+                if (tli.getLeftInd()[i][j] != 0) {
                     fullGrid = false;
                     break;
                 }
-                if (tli.getLefIndCirc()[i][j] ) {
-                    Log.v("Error", "Checks errors " + i + " "+ j );
+                if (tli.getLefIndCirc()[i][j]) {
+                    Log.v("Error", "Checks errors " + i + " " + j);
                     noError = false;
                     break;
                 }
@@ -490,14 +582,14 @@ public class GameDisplay extends SurfaceView {
 
         if (!(fullGrid && noError)) return false;
 
-        for (int i = 0; i < tli.getTopInd().length ; i++) {
+        for (int i = 0; i < tli.getTopInd().length; i++) {
             for (int j = 0; j < tli.getTopInd()[0].length; j++) {
-                if (tli.getTopInd()[i][j] != 0){
+                if (tli.getTopInd()[i][j] != 0) {
                     fullGrid = false;
                     break;
                 }
                 if (tli.getTopIndCirc()[i][j]) {
-                    Log.v("Error", "Checks errors " + i + " "+ j );
+                    Log.v("Error", "Checks errors " + i + " " + j);
                     noError = false;
                     break;
                 }
@@ -507,6 +599,12 @@ public class GameDisplay extends SurfaceView {
         return fullGrid && noError;
     }
 
+    /**
+     * This methods will seek for errors in the row and column passed.
+     * Sets the errors in the error arryas (tli.getLeft&TopIndCirc)
+     * @param col column
+     * @param row row
+     */
     private void isCircleError(int col, int row) {
         // Clear erros.
         for (int i = 0; i < n_cols; i++) {
@@ -580,26 +678,42 @@ public class GameDisplay extends SurfaceView {
                         break;
                 }
             }
-            tli.getTopIndCirc()[col][aux] = ((status == 1 || status == 2) && topInd > 1)!= gameTli.getTopIndCirc()[col][aux];
+            tli.getTopIndCirc()[col][aux] = ((status == 1 || status == 2) && topInd > 1) != gameTli.getTopIndCirc()[col][aux];
         }
 
     }
+
+    /**
+     * Creates the array of buttons that will be displayed on screen with drawButton()
+     */
 
     public void iniciateButton() {
         int nColors = grid.getN_cols() + 1;
         buttons = new ImageHandler[nColors];
         for (int i = 0; i < buttons.length; i++) {
             if (i == 0) {
-                buttons[i] = new ImageHandler(this, R.drawable.triangle);
+                if(grid.getColors()[i].getF() == Form.CIRCLE) {
+                    buttons[i] = new ImageHandler(this, R.drawable.round_button_delete);
+                } else {
+                    buttons[i] = new ImageHandler(this, R.drawable.button_delete_square);
+                }
             } else {
                 if (grid.getColors()[i - 1].getF() == Form.CIRCLE) {
                     buttons[i] = new ImageHandler(this, R.drawable.round_button);
                 } else if (grid.getColors()[i - 1].getF() == Form.SQUARE) {
                     buttons[i] = new ImageHandler(this, R.drawable.button);
                 }
+                if(i== 1) buttons[i].selecciona();
             }
         }
     }
+
+    /**
+     * Draws the buttons (which are Images).
+     * Taking into account the selected one.
+     *
+     * @param canvas
+     */
 
 
     public void drawButton(Canvas canvas) {
@@ -636,7 +750,7 @@ public class GameDisplay extends SurfaceView {
         paint.setAlpha(200);
 
         int xPos = (canvas.getWidth() / 2);
-        int yPos = (int) (posicio - ((paint.descent() + paint.ascent())) / 4);
+        int yPos = (canvas.getHeight()/2);
 
         canvas.drawText(missatge, xPos, yPos, paint);
     }

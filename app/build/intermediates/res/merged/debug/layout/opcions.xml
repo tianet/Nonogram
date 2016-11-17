@@ -1,65 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#FFFFFF">
 
     <TextView
-        android:text="Number of columns"
+        android:text="Form"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/settings_rows"
-        android:id="@+id/settings_columns"
-        android:textColor="@android:color/black" />
+        android:layout_marginTop="27dp"
+        android:id="@+id/Form"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/spinner_columns"
+        android:layout_alignLeft="@+id/settings_columns" />
+
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_form"
+        android:layout_alignLeft="@+id/spinner_columns"
+        android:id="@+id/settings_difficulty">
+        <RadioButton
+            android:text="Easy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_difficulty_easy"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/settings_form_round"
+            android:layout_alignLeft="@+id/settings_form_round" />
+        <RadioButton
+            android:text="Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_difficulty_medium"
+            android:textColor="@android:color/black"
+            android:checked="true"
+            android:layout_below="@+id/settings_difficulty_easy"
+            android:layout_alignLeft="@+id/settings_difficulty_easy" />
+
+        <RadioButton
+            android:text="Difficult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_difficulty_difficult"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/settings_difficulty_medium"
+            android:layout_alignLeft="@+id/settings_difficulty_medium" />
+
+        <RadioButton
+            android:text="Random"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_difficult_random"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/settings_difficulty_difficult"
+            android:layout_alignLeft="@+id/settings_difficulty_difficult" />
+
+    </RadioGroup>
 
     <TextView
         android:text="Number of colors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="101dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="27dp"
         android:id="@+id/settings_colors"
+        android:textColor="@android:color/black"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:textColor="@android:color/black" />
+        android:layout_alignParentLeft="true" />
 
-    <EditText
+    <TextView
+        android:text="Number of columns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/settings_columns_in"
-        android:hint="Number of Columns"
+        android:id="@+id/settings_columns"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/spinner_rows"
+        android:layout_alignLeft="@+id/settings_colors" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_columns"
+        android:entries="@array/number_of_columns"
+        android:layout_alignBaseline="@+id/settings_columns"
+        android:layout_alignBottom="@+id/settings_columns"
+        android:layout_alignLeft="@+id/spinner_rows" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_form"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:text="4" />
+        android:layout_alignLeft="@+id/spinner_columns">
+        <RadioButton
+            android:text="Square"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_form_square"
+            android:textColor="@android:color/black"
+            android:checked="true"
+            android:layout_toRightOf="@+id/settings_sp"
+            android:layout_alignLeft="@+id/settings_form_round" />
+        <RadioButton
+            android:text="Round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_form_round"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/settings_form"
+            android:layout_alignLeft="@+id/spinner_columns" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/settings_rows_in"
-        android:hint="Number of Rows"
-        android:layout_alignBaseline="@+id/settings_rows"
-        android:layout_alignBottom="@+id/settings_rows"
-        android:layout_alignParentRight="true"
-        android:text="4" />
+    </RadioGroup>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/settings_colors_in"
-        android:layout_alignBaseline="@+id/settings_colors"
-        android:layout_alignBottom="@+id/settings_colors"
-        android:layout_alignParentRight="true"
-        android:hint="Number of Colors"
-        android:text="2" />
 
     <Button
         android:text="Start"
@@ -67,48 +126,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/settings_button_exit"
         style="@android:style/Widget.Button"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/settings_columns"
-        android:layout_marginBottom="63dp" />
+        android:layout_alignBottom="@+id/settings_difficulty"
+        android:layout_alignLeft="@+id/settings_rows" />
 
     <TextView
-        android:text="Form"
+        android:text="Difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/settings_columns_in"
-        android:layout_alignLeft="@+id/settings_columns"
-        android:layout_marginTop="45dp"
-        android:id="@+id/Form"
-        android:textColor="@android:color/black" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Form"
-        android:layout_alignLeft="@+id/settings_button_exit" >
-
-        <RadioButton
-            android:text="Round"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/settings_form_round"
-            android:layout_alignBaseline="@+id/Form"
-            android:layout_alignBottom="@+id/Form"
-            android:layout_alignLeft="@+id/settings_columns_in"
-            android:textColor="@android:color/black" />
-
-        <RadioButton
-            android:text="Square"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/settings_form_square"
-            android:textColor="@android:color/black"
-            android:layout_alignBaseline="@+id/settings_form_round"
-            android:layout_alignBottom="@+id/settings_form_round"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:checked="true" />
-    </RadioGroup>
+        android:id="@+id/Difficulty"
+        android:textColor="@android:color/black"
+        android:layout_weight="1"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/settings_form"
+        android:layout_alignLeft="@+id/Form" />
 
     <TextView
         android:text="Number of Rows"
@@ -116,9 +146,28 @@
         android:layout_height="wrap_content"
         android:id="@+id/settings_rows"
         android:textColor="@android:color/black"
-        android:layout_above="@+id/settings_columns_in"
-        android:layout_alignLeft="@+id/settings_colors"
-        android:layout_marginBottom="38dp" />
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/settings_colors"
+        android:layout_alignLeft="@+id/settings_colors" />
+
+    <Button
+        android:text="Colors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_colors_in"
+        android:layout_alignBaseline="@+id/settings_colors"
+        android:layout_alignBottom="@+id/settings_colors"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_rows"
+        android:entries="@array/number_of_rows"
+        android:layout_alignBaseline="@+id/settings_rows"
+        android:layout_alignBottom="@+id/settings_rows"
+        android:layout_alignLeft="@+id/settings_colors_in" />
+
 
     //https://www.mkyong.com/android/android-spinner-drop-down-list-example/
 

@@ -7,8 +7,71 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
+                    "endLine": 8,
+                    "endColumn": 19,
+                    "endOffset": 228
+                },
+                "from": {
+                    "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 707,
+                        "endLine": 29,
+                        "endColumn": 19,
+                        "endOffset": 880
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 233,
+                    "endLine": 24,
+                    "endColumn": 19,
+                    "endOffset": 620
+                },
+                "from": {
+                    "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 1274,
+                        "endLine": 61,
+                        "endColumn": 19,
+                        "endOffset": 1661
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 625,
+                    "endLine": 40,
+                    "endColumn": 19,
+                    "endOffset": 1009
+                },
+                "from": {
+                    "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 885,
+                        "endLine": 45,
+                        "endColumn": 19,
+                        "endOffset": 1269
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 1014,
                     "endColumn": 44,
-                    "endOffset": 95
+                    "endOffset": 1054
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\colors.xml",
@@ -24,11 +87,11 @@
             },
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 42,
                     "startColumn": 4,
-                    "startOffset": 100,
+                    "startOffset": 1059,
                     "endColumn": 47,
-                    "endOffset": 143
+                    "endOffset": 1102
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\colors.xml",
@@ -44,11 +107,11 @@
             },
             {
                 "to": {
-                    "startLine": 4,
+                    "startLine": 43,
                     "startColumn": 4,
-                    "startOffset": 148,
+                    "startOffset": 1107,
                     "endColumn": 47,
-                    "endOffset": 191
+                    "endOffset": 1150
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\colors.xml",
@@ -64,11 +127,11 @@
             },
             {
                 "to": {
-                    "startLine": 5,
+                    "startLine": 44,
                     "startColumn": 4,
-                    "startOffset": 196,
+                    "startOffset": 1155,
                     "endColumn": 40,
-                    "endOffset": 232
+                    "endOffset": 1191
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\dimens.xml",
@@ -84,11 +147,11 @@
             },
             {
                 "to": {
-                    "startLine": 6,
+                    "startLine": 45,
                     "startColumn": 4,
-                    "startOffset": 237,
+                    "startOffset": 1196,
                     "endColumn": 43,
-                    "endOffset": 276
+                    "endOffset": 1235
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\dimens.xml",
@@ -104,11 +167,11 @@
             },
             {
                 "to": {
-                    "startLine": 7,
+                    "startLine": 46,
                     "startColumn": 4,
-                    "startOffset": 281,
+                    "startOffset": 1240,
                     "endColumn": 45,
-                    "endOffset": 322
+                    "endOffset": 1281
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\dimens.xml",
@@ -124,11 +187,11 @@
             },
             {
                 "to": {
-                    "startLine": 8,
+                    "startLine": 47,
                     "startColumn": 4,
-                    "startOffset": 327,
+                    "startOffset": 1286,
                     "endColumn": 54,
-                    "endOffset": 377
+                    "endOffset": 1336
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -144,11 +207,11 @@
             },
             {
                 "to": {
-                    "startLine": 9,
+                    "startLine": 48,
                     "startColumn": 4,
-                    "startOffset": 382,
+                    "startOffset": 1341,
                     "endColumn": 47,
-                    "endOffset": 425
+                    "endOffset": 1384
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -164,11 +227,11 @@
             },
             {
                 "to": {
-                    "startLine": 10,
+                    "startLine": 49,
                     "startColumn": 4,
-                    "startOffset": 430,
+                    "startOffset": 1389,
                     "endColumn": 40,
-                    "endOffset": 466
+                    "endOffset": 1425
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -184,12 +247,12 @@
             },
             {
                 "to": {
-                    "startLine": 11,
+                    "startLine": 50,
                     "startColumn": 4,
-                    "startOffset": 471,
-                    "endLine": 12,
+                    "startOffset": 1430,
+                    "endLine": 51,
                     "endColumn": 13,
-                    "endOffset": 574
+                    "endOffset": 1533
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -205,11 +268,11 @@
             },
             {
                 "to": {
-                    "startLine": 13,
+                    "startLine": 52,
                     "startColumn": 4,
-                    "startOffset": 579,
+                    "startOffset": 1538,
                     "endColumn": 51,
-                    "endOffset": 626
+                    "endOffset": 1585
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -225,11 +288,11 @@
             },
             {
                 "to": {
-                    "startLine": 14,
+                    "startLine": 53,
                     "startColumn": 4,
-                    "startOffset": 631,
+                    "startOffset": 1590,
                     "endColumn": 47,
-                    "endOffset": 674
+                    "endOffset": 1633
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -245,11 +308,11 @@
             },
             {
                 "to": {
-                    "startLine": 15,
+                    "startLine": 54,
                     "startColumn": 4,
-                    "startOffset": 679,
+                    "startOffset": 1638,
                     "endColumn": 49,
-                    "endOffset": 724
+                    "endOffset": 1683
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -265,11 +328,11 @@
             },
             {
                 "to": {
-                    "startLine": 16,
+                    "startLine": 55,
                     "startColumn": 4,
-                    "startOffset": 729,
+                    "startOffset": 1688,
                     "endColumn": 56,
-                    "endOffset": 781
+                    "endOffset": 1740
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -285,11 +348,11 @@
             },
             {
                 "to": {
-                    "startLine": 17,
+                    "startLine": 56,
                     "startColumn": 4,
-                    "startOffset": 786,
+                    "startOffset": 1745,
                     "endColumn": 53,
-                    "endOffset": 835
+                    "endOffset": 1794
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",
@@ -305,11 +368,11 @@
             },
             {
                 "to": {
-                    "startLine": 18,
+                    "startLine": 57,
                     "startColumn": 4,
-                    "startOffset": 840,
+                    "startOffset": 1799,
                     "endColumn": 58,
-                    "endOffset": 894
+                    "endOffset": 1853
                 },
                 "from": {
                     "file": "C:\\AndroidProjects\\Nonogram\\app\\src\\main\\res\\values\\strings.xml",

@@ -2,22 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
+        is-multidex="true"
         jar="C:\AndroidProjects\Nonogram\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="c938b63b43293274d1452a27585daa11bc06ed09">
-        <dex dex="C:\AndroidProjects\Nonogram\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_1a0d6044966e4ea80414eb94a1606c8450fd8731.jar" />
+        sha1="561521a68b0d75bb906e94b8d6feae6ff4b9efd2">
+        <dex dex="C:\AndroidProjects\Nonogram\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_1a0d6044966e4ea80414eb94a1606c8450fd8731\classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
         jar="C:\AndroidProjects\Nonogram\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.1"
-        sha1="c6f126e30785b5adb593b24001bbc7221ef94df3">
-        <dex dex="C:\AndroidProjects\Nonogram\app\build\intermediates\pre-dexed\debug\instant-run_2d60d45c3ceaa8f1b869178dcbad45eb10189639.jar" />
+        sha1="fc41bb93acc65847d3b0a8ad46e2635f2ed01e32">
+        <dex dex="C:\AndroidProjects\Nonogram\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_2d60d45c3ceaa8f1b869178dcbad45eb10189639\classes.dex" />
     </item>
 
 </items>

@@ -9,6 +9,7 @@ public class JocProvaActivity extends Activity {
 
     protected Typeface fontJoc;
 
+
     public void init()
     {
         fontJoc = Typeface.createFromAsset(this.getAssets(), "fonts/arkitechbold.ttf");

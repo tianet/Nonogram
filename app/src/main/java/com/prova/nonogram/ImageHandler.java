@@ -43,7 +43,7 @@ public class ImageHandler
         this.height = bmp.getHeight();
     }
 
-    public void pinta(Canvas canvas, int x, int y, int w, int h)
+    public void pinta(Canvas canvas, int x, int y, int w, int h, Form form)
     {
         if (!visible) return;
 
@@ -57,12 +57,16 @@ public class ImageHandler
         ampla = w;
         alt = h;
 
-        if (seleccionat)
-        {
+        if (seleccionat) {
             paint.setColor(Color.BLACK);
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth((float) 4.0);
-            canvas.drawRect(x-5, y-5, x+w+5, y+h+5, paint);
+            //canvas.drawRect(x-5, y-5, x+w+5, y+h+5, paint);
+            if(form==Form.CIRCLE){
+                canvas.drawCircle(x+w/2,y+h/2,w/2+5,paint);
+            } else {
+                canvas.drawRect(x-5, y-5, x+w+5, y+h+5, paint);
+            }
         }
     }
 
@@ -116,11 +120,11 @@ public class ImageHandler
 
     public boolean contePunt(float x2, float y2) {
         boolean aux = (x2 > posX && x2 < posX + ampla) && (y2 > posY && y2 < posY + alt);
-        if (aux){
+        /*if (aux){
             selecciona();
         } else {
             deselecciona();
-        }
+        }*/
         return aux;
     }
 

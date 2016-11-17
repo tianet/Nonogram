@@ -5,5 +5,5 @@
     <color
         name="version_color">#f0f0f0</color>
     <color
-        name="version_bkgrd">#1a1a48</color>
+        name="version_bkgrd">#FFFFFF</color>
 </resources>

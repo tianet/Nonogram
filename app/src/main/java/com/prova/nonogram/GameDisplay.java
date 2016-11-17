@@ -211,7 +211,10 @@ public class GameDisplay extends SurfaceView {
                     y = (int) event.getY();
                     for (int i = 0; i < buttons.length; i++) {
                         if (buttons[i].contePunt(x, y)) {
+                            buttons[presentCol+1].deselecciona();
+                            buttons[i].selecciona();
                             presentCol = i - 1;
+                            break;
                         }
                     }
                 }
@@ -723,7 +726,7 @@ public class GameDisplay extends SurfaceView {
         int startX = (int) (s_x + padding);
         for (int i = 0; i < nColors; i++) {
             if (i == 0) {
-                buttons[i].pinta(canvas, toScreen(startX), toScreen(startY), toScreen(100), toScreen(100));
+                buttons[i].pinta(canvas, toScreen(startX), toScreen(startY), toScreen(100), toScreen(100), grid.getColors()[i].getF());
             } else {
                 buttons[i].pintaAmbFiltre(canvas, toScreen(startX + padding * i), toScreen(startY), toScreen(100), toScreen(100), grid.getColors()[i - 1].getC(), 255, grid.getColors()[i - 1].getF());
             }

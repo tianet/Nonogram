@@ -40,7 +40,7 @@
         <item>15</item>
     </string-array>
     <color name="logo_color">#FFFF0F</color>
-    <color name="version_bkgrd">#1a1a48</color>
+    <color name="version_bkgrd">#FFFFFF</color>
     <color name="version_color">#f0f0f0</color>
     <dimen name="logo_size">24pt</dimen>
     <dimen name="version_size">15pt</dimen>

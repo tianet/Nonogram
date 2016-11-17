@@ -168,7 +168,7 @@ public class TopLeftIndicators {
             } else {
                 return JocProvaActivity.Difficulty.DIFFICULT;
             }
-        } else if (totalNumber >20 && totalNumber < 30) {
+        } else if (totalNumber >15 && totalNumber < 30) {
             if (percentage > 0.15) {
                 return JocProvaActivity.Difficulty.EASY;
             } else if (percentage < 0.15 && percentage > 0.075 ) {

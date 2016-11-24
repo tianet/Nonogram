@@ -47,6 +47,7 @@ public class GameDisplay extends SurfaceView {
     private double maxPreassureTime = 100;
 
     private boolean gameFinished = false;
+    private boolean noError = true;
 
     /**
      * GameDisplay constructor.
@@ -66,7 +67,7 @@ public class GameDisplay extends SurfaceView {
             public void surfaceCreated(SurfaceHolder arg0) {
                 initiateGame();
                 partir();
-                jocLoopThread.start();
+                if (!jocLoopThread.isAlive()) jocLoopThread.start();
             }
 
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
@@ -204,6 +205,7 @@ public class GameDisplay extends SurfaceView {
                     if (gameWon()) {
                         gameFinished = true;
                         setDelaysForFinalAnimation();
+                        MainActivity.stopTime();
                     }
                     return true;
                 } else {
@@ -496,7 +498,13 @@ public class GameDisplay extends SurfaceView {
                         canvas.drawCircle(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j - 0.5))), toScreen((int) (s_y + (grid.getN_cols() + i + 0.5) * cellSizeY)), toScreen(textSize - 2), indicatorPainter);
                     }
                 } else if (aux < 0 || tli.getLefIndCirc()[i][j]) {
-                    canvas.drawRect(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j - 1))), toScreen((int) (s_y + (grid.getN_cols() + i) * cellSizeY)), toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j))), toScreen((int) (s_y + (grid.getN_cols() + i + 1) * cellSizeY)), paintErr);
+                    if(JocProvaActivity.difficulty== JocProvaActivity.Difficulty.EASY){
+                        canvas.drawRect(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j - 1))), toScreen((int) (s_y + (grid.getN_cols() + i) * cellSizeY)), toScreen((int) (s_x + cellSizeX * (grid.getN_cols() - j))), toScreen((int) (s_y + (grid.getN_cols() + i + 1) * cellSizeY)), paintErr);
+                    } else if(JocProvaActivity.difficulty== JocProvaActivity.Difficulty.MEDIUM){
+                        canvas.drawRect(toScreen((int) (s_x) ), toScreen((int) (s_y + (grid.getN_cols() + i) * cellSizeY)), toScreen((int) (s_x + grid.getN_cols()*cellSizeX)), toScreen((int) (s_y + (grid.getN_cols() + i + 1) * cellSizeY)), paintErr);
+                    }
+                    escriuNormal(canvas, "!", toScreen(textSize*4), Color.BLACK, toScreen((int) (s_x + grid.getN_cols()/2*cellSizeX)), toScreen((int)(s_y + grid.getN_cols()/2*cellSizeY )));
+
                     escriuNormal(canvas, "" + gameAux, toScreen(textSize), grid.getColors()[j].getC(), toScreen(x), toScreen(y));
                     // Paint Circle
                     if (leftIndCirc[i][j]) {
@@ -541,7 +549,13 @@ public class GameDisplay extends SurfaceView {
                         canvas.drawCircle(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() + i + 0.5))), toScreen((int) (s_y + (grid.getN_cols() - j - 0.5) * cellSizeY)), toScreen(textSize - 2), indicatorPainter);
                     }
                 } else if (aux < 0 || tli.getTopIndCirc()[i][j]) {
-                    canvas.drawRect(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() + i))), toScreen((int) (s_y + (grid.getN_cols() - j - 1) * cellSizeY)), toScreen((int) (s_x + cellSizeX * (grid.getN_cols() + i + 1))), toScreen((int) (s_y + (grid.getN_cols() - j) * cellSizeY)), paintErr);
+                    if(JocProvaActivity.difficulty== JocProvaActivity.Difficulty.EASY){
+                        canvas.drawRect(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() + i))), toScreen((int) (s_y + (grid.getN_cols() - j - 1) * cellSizeY)), toScreen((int) (s_x + cellSizeX * (grid.getN_cols() + i + 1))), toScreen((int) (s_y + (grid.getN_cols() - j) * cellSizeY)), paintErr);
+                    } else if(JocProvaActivity.difficulty== JocProvaActivity.Difficulty.MEDIUM){
+                        canvas.drawRect(toScreen((int) (s_x + cellSizeX * (grid.getN_cols() + i))), toScreen((int) (s_y )), toScreen((int) (s_x + cellSizeX * (grid.getN_cols() + i + 1))), toScreen((int) (s_y + grid.getN_cols() * cellSizeY)), paintErr);
+                    }
+                    escriuNormal(canvas, "!", toScreen(textSize*4), Color.BLACK, toScreen((int) (s_x + grid.getN_cols()/2*cellSizeX)), toScreen((int)(s_y + grid.getN_cols()/2*cellSizeY )));
+
                     escriuNormal(canvas, "" + gameAux, toScreen(textSize), grid.getColors()[j].getC(), toScreen(x), toScreen(y));
                     if (topIndCirc[i][j]) {
                         indicatorPainter.setColor(grid.getColors()[j].getC());
@@ -773,11 +787,14 @@ public class GameDisplay extends SurfaceView {
     }
 
     public void aturar() {
-        jocLoopThread.setRunning(false);
+        if(jocLoopThread!=null) jocLoopThread.setRunning(false);
+
     }
 
     public void partir() {
-        jocLoopThread.setRunning(true);
+
+        if(jocLoopThread!=null) jocLoopThread.setRunning(true);
     }
+
 
 }

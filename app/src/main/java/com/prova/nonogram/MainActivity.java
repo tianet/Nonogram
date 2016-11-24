@@ -4,20 +4,38 @@ package com.prova.nonogram;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends JocProvaActivity {
     private GameDisplay joc;
+    private static TextView timerTextView;
+    private static long startTime =0;
+    public static Handler timerHandler = new Handler();
+    public static Runnable timerRunnable = new Runnable() {
 
+        @Override
+        public void run() {
+            long millis = System.currentTimeMillis() - startTime;
+            int seconds = (int) (millis / 1000);
+            int minutes = seconds / 60;
+            seconds = seconds % 60;
 
+            timerTextView.setText(String.format("%d:%02d", minutes, seconds));
+            timerHandler.postDelayed(this, 500);
+        }
+    };
  
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.joc);
+        timerTextView = (TextView) findViewById(R.id.textClock);
     }
 
     @Override
@@ -47,12 +65,20 @@ public class MainActivity extends JocProvaActivity {
                 // afegeix la pantalla de dibuix al Layout
                 pantalla.addView(joc);
             } else {
-                while (TopLeftIndicators.getDifficulty(tli, grid)!=difficulty) {
+                if(!(nColors>3 && nRows<=4 && nColumns<=4 )) {
+                    while (TopLeftIndicators.getDifficulty(tli, grid)!=difficulty) {
+                        grid = new Grid(nRows,nColumns,figures);
+                        tli = new TopLeftIndicators(grid);
+                    }
+                } else {
                     grid = new Grid(nRows,nColumns,figures);
                     tli = new TopLeftIndicators(grid);
                 }
+
                 joc = new GameDisplay(this, grid ,  tli);
                 // afegeix la pantalla de dibuix al Layout
+                startTime = System.currentTimeMillis();
+                timerHandler.postDelayed(timerRunnable, 0);
                 pantalla.addView(joc);
             }
 
@@ -63,4 +89,15 @@ public class MainActivity extends JocProvaActivity {
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+
+    public static void stopTime() {
+        timerHandler.removeCallbacks(timerRunnable);
+    }
 }
+

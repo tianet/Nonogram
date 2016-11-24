@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="23"
+    abi="armeabi-v7a,armeabi"
+    api-level="19"
     density="xhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="6549609695538"
+    timestamp="183079551664817"
     token="-2442086950723243254"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="552" />
+        duration="437" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="26" />
+        duration="86" />
     <task
         name="verifier"
-        duration="16" />
+        duration="14" />
 
     <artifact
-        location="C:\AndroidProjects\Nonogram\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
-        type="DEX" />
+        location="C:\AndroidProjects\Nonogram\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="6182777890380"
+        timestamp="257303766375087"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\AndroidProjects\Nonogram\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="6549609695538"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\AndroidProjects\Nonogram\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

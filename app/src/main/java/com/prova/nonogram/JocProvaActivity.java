@@ -23,5 +23,6 @@ public class JocProvaActivity extends Activity {
     public void init()
     {
         fontJoc = Typeface.createFromAsset(this.getAssets(), "fonts/arkitechbold.ttf");
+        //Check git
     }
 }

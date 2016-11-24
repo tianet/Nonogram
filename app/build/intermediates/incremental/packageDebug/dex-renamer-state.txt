@@ -1,7 +1,4 @@
-#Thu Nov 17 18:19:46 CET 2016
-base.0=C\:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_1a0d6044966e4ea80414eb94a1606c8450fd8731
-renamed.1=classes2.dex
+#Thu Nov 24 17:20:15 CET 2016
+base.0=C\:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.1=C\:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_2d60d45c3ceaa8f1b869178dcbad45eb10189639\\classes.dex
-base.1=C\:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_2d60d45c3ceaa8f1b869178dcbad45eb10189639
-file.0=C\:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_1a0d6044966e4ea80414eb94a1606c8450fd8731\\classes.dex
+file.0=C\:\\AndroidProjects\\Nonogram\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

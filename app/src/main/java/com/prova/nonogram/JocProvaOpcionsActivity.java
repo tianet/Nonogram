@@ -113,7 +113,7 @@ public class JocProvaOpcionsActivity extends JocProvaActivity {
                 aux++;
             }
         }
-        if(nColors!=0) {
+        if(nColors>1) {
             valid = true;
         } else {
             valid = false;
@@ -124,12 +124,7 @@ public class JocProvaOpcionsActivity extends JocProvaActivity {
         if(valid) {
             Intent i = new Intent(JocProvaOpcionsActivity.this, MainActivity.class);
             startActivity(i);
-
         }
-
-
-
-
     }
 
     private int getIndexFromView(View v){
@@ -224,11 +219,11 @@ public class JocProvaOpcionsActivity extends JocProvaActivity {
         bars[2]  = (SeekBar) dialogView.findViewById(R.id.sb2);
         areaButton = (Button) dialogView.findViewById(R.id.colorArea);
         areaButton.setClickable(false);
-        areaButton.setBackgroundColor(colors[index]);
+        areaButton.setBackgroundColor(colorButton[index]);
 
         for (int i = 0 ; i <3 ; i++){
             bars[i].setMax(255);
-            bars[i].setProgress((colors[index]>>8*i)&0xFF);
+            bars[i].setProgress((colorButton[index]>>8*i)&0xFF);
             bars[i].setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -240,6 +235,16 @@ public class JocProvaOpcionsActivity extends JocProvaActivity {
                     areaButton.setBackgroundColor(c);
                     colorButton[getIndexFromView(colorbutton)]=c;
                     colorbutton.setBackgroundColor(c);
+                    int e=0;
+                    for (int j = 0 ; j < 3; j++){
+                        int aux = ((c>>(8*j))&0xFF);
+                        e += aux * aux;
+                    }
+                    if (e<65536){
+                        colorbutton.setTextColor(0xFFFFFFFF);
+                    }else {
+                        colorbutton.setTextColor(0xFF000000);
+                    }
                     colorbutton.setText("SEL");
                 }
 
@@ -253,11 +258,8 @@ public class JocProvaOpcionsActivity extends JocProvaActivity {
 
                 }
             });
-            bars[0].setProgress(colorButton[index]&0xFF);
-            bars[1].setProgress((colorButton[index]>>8)&0xFF);
-            bars[2].setProgress((colorButton[index]>>16)&0xFF);
-        }
 
+        }
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.show();
     }

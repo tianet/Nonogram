@@ -24,7 +24,21 @@ public class Grid {
         }
     }
 
+    /**
+     * Creating Grid from strict parameters.
+     * @param rows Number of rows.
+     * @param cols Number of columns.
+     * @param c Final colors
+     * @param w Final grid of cols
+     */
 
+    public Grid(int rows, int cols, Col[] c, Col[][] w) {
+        this.rows = rows;
+        this.cols = cols;
+        this.colors = c;
+        this.n_cols = c.length;
+        this.array_cols = w;
+    }
     /**
      * Must throw exceptions if rows or cols are negative.
      * @param rows
